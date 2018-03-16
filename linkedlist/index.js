@@ -3,8 +3,8 @@
 // See 'directions' document
 
 class Node {
-    constructor(value, next = null) {
-        this.value = value;
+    constructor(data, next = null) {
+        this.data = data;
         this.next = next;
     }
 }
@@ -14,8 +14,8 @@ class LinkedList {
         this.head = null;
     }
 
-    insertFirst(value) {
-        this.head = new Node(value, this.head);
+    insertFirst(data) {
+        this.head = new Node(data, this.head);
     }
 
     size() {
@@ -82,13 +82,13 @@ class LinkedList {
         previous.next = null;
     }
 
-    insertLast(value) {
+    insertLast(data) {
         let last = this.getLast();
 
         if (last) {
-            last.next = new Node(value);
+            last.next = new Node(data);
         } else {
-            this.head = new Node(value);
+            this.head = new Node(data);
         }
     }
 
@@ -127,19 +127,19 @@ class LinkedList {
         previous.next = previous.next.next;
     }
 
-    insertAt(value, index) {
+    insertAt(data, index) {
         if (!this.head) {
-            this.head = new Node(value);
+            this.head = new Node(data);
             return;
         }
 
         if (index === 0) {
-            this.head = new Node(value, this.head);
+            this.head = new Node(data, this.head);
             return;
         }
 
         let previous = this.getAt(index - 1) || this.getLast();
-        let node = new Node(value, previous.next);
+        let node = new Node(data, previous.next);
         previous.next = node;
     }
 
